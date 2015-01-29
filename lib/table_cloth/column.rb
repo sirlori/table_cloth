@@ -1,10 +1,11 @@
 module TableCloth
   class Column
-    attr_reader :options, :name
+    attr_reader :options, :name, :obclass
 
-    def initialize(name, options={})
+    def initialize(name, options={}, obclass)
       @name = name
       @options = options
+      @obclass = obclass
     end
 
     def value(object, view, table=nil)
@@ -15,11 +16,11 @@ module TableCloth
       end
     end
 
-    def human_name(view,object)
+    def human_name(view)
       if options[:label].kind_of? Proc
         view.instance_exec(&options[:label])
       else
-        options[:label] || object.class.human_attribute_name(name)
+        options[:label] || obclass.human_attribute_name(name)|| name.to_s.humanize
       end
     end
   end
