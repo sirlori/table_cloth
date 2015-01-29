@@ -24,7 +24,7 @@ describe TableCloth::Presenters::Default do
 
     it "creates th's with the correct text" do
       thead.css("th").each_with_index do |th, i|
-        expect(th.text).to eq(subject.columns[i].human_name(view_context))
+        expect(th.text).to eq(subject.columns[i].human_name(view_context, object))
       end
     end
 
