@@ -22,7 +22,7 @@ module TableCloth
 
     def columns
       @columns ||= table.class.columns.map do |name, column_hash|
-        column = column_hash[:class].new(name, column_hash[:options], objects.first.class)
+        column = column_hash[:class].new(name, column_hash[:options])
         ColumnJury.new(column, table).available? ? column : nil
       end.compact
     end

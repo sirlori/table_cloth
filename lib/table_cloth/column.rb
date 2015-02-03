@@ -1,8 +1,8 @@
 module TableCloth
   class Column
-    attr_reader :options, :name, :obclass
+    attr_reader :options, :name
 
-    def initialize(name, options={}, obclass)
+    def initialize(name, options={})
       @name = name
       @options = options
       @obclass = obclass
