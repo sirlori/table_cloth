@@ -20,7 +20,7 @@ module TableCloth
         view.instance_exec(&options[:label])
       else
         object_class = view.try(:collection).try(:klass) || view.try(:collection).try(:first).try(:class)
-        options[:label] || object_class.try(:human_attribute_name, :name) || name.to_s.humanize
+        options[:label] || object_class.try(:human_attribute_name, name) || name.to_s.humanize
       end
     end
   end
