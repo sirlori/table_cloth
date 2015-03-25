@@ -20,7 +20,8 @@ module TableCloth
       if options[:label].kind_of? Proc
         view.instance_exec(&options[:label])
       else
-        options[:label] || view.collection.klass.human_attribute_name(name) || name.to_s.humanize
+        object_class = view.try(:collection).try(:klass) || view.try(:collection).try(:first).try(:class)
+        options[:label] || object_class.try(:human_attribute_name, :name) || name.to_s.humanize
       end
     end
   end
