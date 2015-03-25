@@ -5,7 +5,6 @@ module TableCloth
     def initialize(name, options={})
       @name = name
       @options = options
-      @obclass = obclass
     end
 
     def value(object, view, table=nil)
